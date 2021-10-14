@@ -6,5 +6,10 @@ module.exports = (err, req, res, next) => {
     return res.status(err.status).json({ message: err.message });
   }
 
-  res.status(500).json({ message: "something went wrong(unfixed)" });
+  res.status(500).json({
+    message: "something went wrong(unfixed)",
+    errMSG: err.message,
+    errStatus: err.status,
+    err: err,
+  });
 };

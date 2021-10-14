@@ -12,7 +12,7 @@ class UserController {
       return next(ApiError.badRequest("не задан id"));
     }
 
-    res.status(200).json(query);
+    res.status(200).json(req.query);
   }
 }
 
