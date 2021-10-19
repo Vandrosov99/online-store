@@ -7,7 +7,7 @@ import {
   SHOP_ROUTE,
 } from "../const/routeKeys";
 import AdminPage from "../pages/AdminPage";
-import AuthPage from "../pages/AuthPage";
+import AuthPage from "../pages/AuthPage/AuthPage";
 import BasketPage from "../pages/BasketPage";
 import DevicePage from "../pages/DevicePage";
 import ShopPage from "../pages/ShopPage";

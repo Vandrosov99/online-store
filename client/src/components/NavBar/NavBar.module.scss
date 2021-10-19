@@ -1,0 +1,22 @@
+.Header{
+    background: rgb(14, 93, 158);
+    height: 5vh;
+}
+
+.MainLogoLink{
+    text-decoration: none;
+    color:white;
+    padding: 0 10px;
+}
+
+.MainLogoLink:hover{
+    color:white;
+    cursor: pointer;
+}
+
+.FlexContainer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+}
