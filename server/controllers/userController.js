@@ -11,7 +11,7 @@ const generateJWT = (id, email, role) =>
       role,
     },
     process.env.SECRET_KEY,
-    { expiresIn: "24h" }
+    { expiresIn: "20h" }
   );
 
 class UserController {
@@ -59,7 +59,7 @@ class UserController {
     const { id, email, role } = req.user;
     const token = generateJWT(id, email, role);
 
-    return res.json({ token });
+    return res.json(token);
   }
 }
 
