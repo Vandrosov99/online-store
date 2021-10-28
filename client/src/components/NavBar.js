@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { LOGIN_ROUTE, SHOP_ROUTE } from "../const/routeKeys";
+import { ADMIN_ROUTE, LOGIN_ROUTE, SHOP_ROUTE } from "../const/routeKeys";
 import { makeIsAuth } from "../store/selectors";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router";
@@ -10,9 +10,9 @@ const NavBar = () => {
   const isAuth = useSelector(makeIsAuth());
   const history = useHistory();
 
-  const onLogin = () => {
-    history.push(LOGIN_ROUTE);
-  };
+  const onLogIn = () => history.push(LOGIN_ROUTE);
+  const onAdmin = () => history.push(ADMIN_ROUTE);
+  const onLogout = () => history.push(LOGIN_ROUTE);
 
   return (
     <Navbar bg='dark' variant='dark'>
@@ -27,14 +27,19 @@ const NavBar = () => {
         </NavLink>
         {isAuth ? (
           <Nav className='ml-auto' style={{ color: "white" }}>
-            <Button variant={"outline-light"}>Админ панель</Button>
-            <Button variant={"outline-light"} className='ml-2'>
+            <Button variant={"outline-light"} onClick={onAdmin}>
+              Админ панель
+            </Button>
+            <Button
+              variant={"outline-light"}
+              className='ml-2'
+              onClick={onLogout}>
               Выйти
             </Button>
           </Nav>
         ) : (
           <Nav className='ml-auto' style={{ color: "white" }}>
-            <Button variant='outline-light' onClick={onLogin}>
+            <Button variant='outline-light' onClick={onLogIn}>
               Авторизация
             </Button>
           </Nav>

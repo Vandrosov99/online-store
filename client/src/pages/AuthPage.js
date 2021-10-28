@@ -59,12 +59,12 @@ const AuthPage = () => {
           />
           <Row className='d-flex justify-content-between mt-3 pe-3 ps-3'>
             {isLogin ? (
-              <div style={{ width: "auto" }}>
+              <div className='w-auto'>
                 Нет аккаунта?
                 <NavLink to={REGISTRATION_ROUTE}>Зарегистрируйся!</NavLink>
               </div>
             ) : (
-              <div style={{ width: "auto" }}>
+              <div className='w-auto'>
                 Есть аккаунт? <NavLink to={LOGIN_ROUTE}>Войдите!</NavLink>
               </div>
             )}

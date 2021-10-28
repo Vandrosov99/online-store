@@ -6,7 +6,7 @@ import {
 import { v4 as uuid } from "uuid";
 
 const initState = {
-  IS_AUTH: false,
+  IS_AUTH: true,
   notificationList: [],
 };
 
