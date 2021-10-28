@@ -17,6 +17,7 @@ const AuthController = ({ children }) => {
       history.push(SHOP_ROUTE);
     } catch (e) {
       console.log(e);
+      history.push(LOGIN_ROUTE);
     }
 
     setIsLoading(false);
