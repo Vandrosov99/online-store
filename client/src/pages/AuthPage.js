@@ -69,6 +69,7 @@ const AuthPage = () => {
       dispatch(setAuth(true));
       history.push(SHOP_ROUTE);
     } catch (e) {
+      console.log("ON AUTH SUBMIT");
       console.log(e);
       dispatch(
         setNotification({

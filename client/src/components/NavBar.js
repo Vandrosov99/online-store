@@ -5,7 +5,7 @@ import { makeIsAuth } from "../store/selectors";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router";
 import { Container, Nav, Navbar, Button } from "react-bootstrap";
-import { setAuth } from "../store/actions";
+import { setAuth, setUser } from "../store/actions";
 
 const NavBar = () => {
   const isAuth = useSelector(makeIsAuth());
@@ -17,6 +17,7 @@ const NavBar = () => {
   const onLogout = () => {
     history.push(LOGIN_ROUTE);
     dispatch(setAuth(false));
+    dispatch(setUser({}));
   };
 
   return (

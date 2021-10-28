@@ -29,6 +29,7 @@ const start = async () => {
       console.log(`Server starts on this post: ${PORT}`);
     });
   } catch (error) {
+    console.log("ON START SERVER");
     console.log(error);
   }
 };

@@ -1,24 +1,7 @@
 import { SET_TYPE, SET_TYPES, SET_ACTIVE_TYPE } from "../../const/duckKeys";
 
 const initState = {
-  types: [
-    {
-      id: 1,
-      name: "Холодильник",
-    },
-    {
-      id: 2,
-      name: "Телефоны",
-    },
-    {
-      id: 3,
-      name: "Мультиварки",
-    },
-    {
-      id: 4,
-      name: "Пылесосы",
-    },
-  ],
+  types: [],
   selectedTypeId: null,
 };
 
