@@ -2,18 +2,23 @@ import {
   DELETE_NOTIFICATION,
   SET_AUTH,
   SET_NOTIFICATION,
+  SET_USER,
 } from "../../const/duckKeys";
 import { v4 as uuid } from "uuid";
 
 const initState = {
-  IS_AUTH: true,
+  IS_AUTH: null,
   notificationList: [],
+  userInfo: {},
 };
 
 const userReducer = (state = initState, action) => {
   const { type, payload } = action;
 
   switch (type) {
+    case SET_USER: {
+      return { ...state, userInfo: { ...payload } };
+    }
     case SET_AUTH:
       return { ...state, IS_AUTH: payload };
     case SET_NOTIFICATION: {
@@ -26,7 +31,7 @@ const userReducer = (state = initState, action) => {
       };
 
       const isThisNotificationExist = notificationList.some(
-        el => el.title === title
+        el => el.description === description
       );
 
       if (isThisNotificationExist) return state;

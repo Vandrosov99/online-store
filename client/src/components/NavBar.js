@@ -2,17 +2,22 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import { ADMIN_ROUTE, LOGIN_ROUTE, SHOP_ROUTE } from "../const/routeKeys";
 import { makeIsAuth } from "../store/selectors";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router";
 import { Container, Nav, Navbar, Button } from "react-bootstrap";
+import { setAuth } from "../store/actions";
 
 const NavBar = () => {
   const isAuth = useSelector(makeIsAuth());
   const history = useHistory();
+  const dispatch = useDispatch();
 
   const onLogIn = () => history.push(LOGIN_ROUTE);
   const onAdmin = () => history.push(ADMIN_ROUTE);
-  const onLogout = () => history.push(LOGIN_ROUTE);
+  const onLogout = () => {
+    history.push(LOGIN_ROUTE);
+    dispatch(setAuth(false));
+  };
 
   return (
     <Navbar bg='dark' variant='dark'>

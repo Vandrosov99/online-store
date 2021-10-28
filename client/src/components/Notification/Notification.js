@@ -13,7 +13,7 @@ const Notification = props => {
     setIsActive(false);
     setTimeout(() => {
       dispatch(deleteNotification(id));
-    }, 5000);
+    }, 1000);
   };
 
   return (

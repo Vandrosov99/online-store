@@ -20,7 +20,7 @@ const ModalButton = props => {
         backdrop='static'
         keyboard={false}>
         <Modal.Header closeButton>
-          <Modal.Title>{titleText}</Modal.Title>
+          <Modal.Title className='text-center'>{titleText}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form>{children}</Form>
@@ -30,7 +30,7 @@ const ModalButton = props => {
             Закрыть
           </Button>
           <Button variant='outline-success' onClick={onSaveClick}>
-            Сохранить
+            Отправить
           </Button>
         </Modal.Footer>
       </Modal>

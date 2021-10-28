@@ -8,6 +8,7 @@ import {
   SET_ACTIVE_BRAND,
   SET_NOTIFICATION,
   DELETE_NOTIFICATION,
+  SET_USER,
 } from "../../const/duckKeys";
 
 const setAuth = payload => {
@@ -72,6 +73,13 @@ const deleteNotification = payload => {
   };
 };
 
+const setUser = payload => {
+  return {
+    type: SET_USER,
+    payload: payload,
+  };
+};
+
 export {
   setAuth,
   setDevice,
@@ -82,4 +90,5 @@ export {
   setActiveBrand,
   setNotification,
   deleteNotification,
+  setUser,
 };

@@ -34,7 +34,7 @@ class UserController {
 
     const token = generateJWT(user.id, user.email, user.role);
 
-    return res.json(token);
+    return res.json({ token });
   }
 
   async login(req, res, next) {
@@ -52,14 +52,14 @@ class UserController {
 
     const token = generateJWT(user.id, user.email, user.role);
 
-    return res.json(token);
+    return res.json({ token });
   }
 
   async authCheck(req, res, next) {
     const { id, email, role } = req.user;
     const token = generateJWT(id, email, role);
 
-    return res.json(token);
+    return res.json({ token });
   }
 }
 

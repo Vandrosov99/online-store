@@ -8,8 +8,7 @@ Front-end:
 2. React bootstrap (styling)
 3. Axios (requests to server)
 4. React-router-dom (navigation)
-5. MobX (state managment) maybe will replace for Redux
-6. Maybe some hooks
+5. Redux
 
 Functionality:
 
