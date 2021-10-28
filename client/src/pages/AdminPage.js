@@ -15,11 +15,7 @@ const mapStateToProps = createStructuredSelector({
 
 const AdminPage = props => {
   const { TYPES, BRANDS } = props;
-
   const [propertyList, setPropertyList] = useState([]);
-
-  console.log("prop list");
-  console.log(propertyList);
 
   const addProperty = () => {
     setPropertyList([
