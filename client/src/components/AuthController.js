@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import { authCheck } from "../../src/http/userApi";
 import { setAuth, setUser } from "../store/actions";
 import { Spinner } from "react-bootstrap";
-import { useHistory, useDispatch } from "react-router";
+import { useHistory } from "react-router";
+import { useDispatch } from "react-redux";
 import { LOGIN_ROUTE, SHOP_ROUTE } from "../const/routeKeys";
 
 const AuthController = ({ children }) => {
@@ -13,7 +14,7 @@ const AuthController = ({ children }) => {
   const checkUser = async () => {
     try {
       const user = await authCheck();
-
+      console.log("We are here");
       dispatch(setUser(user));
       dispatch(setAuth(true));
       history.push(SHOP_ROUTE);
@@ -34,7 +35,7 @@ const AuthController = ({ children }) => {
     return <Spinner animation='grow' />;
   }
 
-  return { children };
+  return <>{children}</>;
 };
 
 export default AuthController;

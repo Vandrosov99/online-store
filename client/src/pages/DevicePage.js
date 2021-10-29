@@ -1,18 +1,33 @@
-import Button from "@restart/ui/esm/Button";
-import React from "react";
-import { Card, Col, Container, Image, Row } from "react-bootstrap";
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import httpService from "../services/httpService";
+
+import { Card, Col, Container, Image, Row, Button } from "react-bootstrap";
 import bigStar from "../assets/device/big_star.png";
 
 const DevicePage = props => {
-  const { device } = props;
-  const { img, name, rating, price } = device;
-  const description = []; //fetch from server
+  const [device, setDevice] = useState({ info: [] });
+  const { id } = useParams();
+  const { img, name, rating, price, info } = device;
+
+  useEffect(() => {
+    httpService
+      .getSingleDeviceFromServerById(id)
+      .then(data => {
+        setDevice(data);
+      })
+      .catch(e => console.log(e));
+  }, []);
 
   return (
     <Container className='mt-3'>
       <Row>
         <Col md={4}>
-          <Image width={300} height={300} src={img} />
+          <Image
+            width={300}
+            height={300}
+            src={process.env.REACT_APP_API_URL + img}
+          />
         </Col>
         <Col md={4}>
           <Row className='d-flex flex-column align-items-center'>
@@ -46,7 +61,7 @@ const DevicePage = props => {
       </Row>
       <Row className='d-flex flex-column m-3'>
         <h1>Характеристики</h1>
-        {description.map((info, index) => {
+        {info.map((info, index) => {
           const { id, title, description } = info;
 
           return (

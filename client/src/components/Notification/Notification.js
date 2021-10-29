@@ -1,7 +1,7 @@
 import cn from "classnames";
 import React, { useState } from "react";
 import { deleteNotification } from "../../store/actions";
-import { Row, Col, Toast } from "react-bootstrap";
+import { Col, Toast } from "react-bootstrap";
 import styles from "../Notification/Notification.module.scss";
 
 const Notification = props => {
@@ -17,23 +17,17 @@ const Notification = props => {
   };
 
   return (
-    <Row>
-      <Col>
-        <Toast
-          onClose={onCloseClick}
-          className={cn(styles.Toast, { [styles.CloseAnimation]: !isActive })}>
-          <Toast.Header>
-            <img
-              src='holder.js/20x20?text=%20'
-              className='rounded me-2'
-              alt=''
-            />
-            <strong className='me-auto'>{title}</strong>
-          </Toast.Header>
-          <Toast.Body>{description}</Toast.Body>
-        </Toast>
-      </Col>
-    </Row>
+    <Col>
+      <Toast
+        onClose={onCloseClick}
+        className={cn(styles.Toast, { [styles.CloseAnimation]: !isActive })}>
+        <Toast.Header>
+          <img src='holder.js/20x20?text=%20' className='rounded me-2' alt='' />
+          <strong className='me-auto'>{title}</strong>
+        </Toast.Header>
+        <Toast.Body>{description}</Toast.Body>
+      </Toast>
+    </Col>
   );
 };
 

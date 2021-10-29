@@ -7,6 +7,10 @@ const ModalButton = props => {
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  const onSubmit = e => {
+    onSaveClick(e);
+    setShow(false);
+  };
 
   return (
     <>
@@ -29,7 +33,7 @@ const ModalButton = props => {
           <Button variant='outline-danger' onClick={handleClose}>
             Закрыть
           </Button>
-          <Button variant='outline-success' onClick={onSaveClick}>
+          <Button variant='outline-success' onClick={e => onSubmit(e)}>
             Отправить
           </Button>
         </Modal.Footer>

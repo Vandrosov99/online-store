@@ -4,24 +4,34 @@ import BrandBar from "../components/BrandBar";
 import { Col, Container, Row } from "react-bootstrap";
 import DeviceList from "../components/DeviceList";
 import { useDispatch } from "react-redux";
-import { fetchTypes } from "../http/deviceApi";
-import { setTypes } from "../store/actions/index";
+import { setTypes, setBrands, setDevices } from "../store/actions/index";
+import httpService from "../services/httpService";
 
 const ShopPage = () => {
   const dispatch = useDispatch();
 
-  //services
-  const getTypesFromServer = () => {
-    fetchTypes().then(data =>
-      dispatch(setTypes(data)).catch(e => {
-        console.log("getTypesFromServer");
-        console.log(e);
-      })
-    );
+  const getTypesFromServer = async () => {
+    const types = await httpService.getTypesFromServer();
+
+    dispatch(setTypes(types));
+  };
+
+  const getBrandsFromServer = async () => {
+    const brands = await httpService.getBrandsFromServer();
+
+    dispatch(setBrands(brands));
+  };
+
+  const getDevicesFromServer = async () => {
+    const devices = await httpService.getDevicesFromServer();
+
+    dispatch(setDevices(devices.rows));
   };
 
   useEffect(() => {
     getTypesFromServer();
+    getBrandsFromServer();
+    getDevicesFromServer();
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (

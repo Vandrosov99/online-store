@@ -20,7 +20,11 @@ const DeviceItem = props => {
         border={"light"}
         className='p-2'
         onClick={onDeviceClick}>
-        <Image width={"100%"} height={120} src={img} />
+        <Image
+          width={"100%"}
+          height={120}
+          src={process.env.REACT_APP_API_URL + img}
+        />
         <div className='text-black-50 mt-1 d-flex justify-content-between align-items-center'>
           <div>Samsung</div>
           <div className='d-flex align-items-center'>
