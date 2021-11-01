@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import httpService from "../services/httpService";
-
 import { Card, Col, Container, Image, Row, Button } from "react-bootstrap";
 import bigStar from "../assets/device/big_star.png";
+import useDocumentTitle from "../hooks/useDocumentTitle";
 
 const DevicePage = props => {
   const [device, setDevice] = useState({ info: [] });
@@ -17,7 +17,9 @@ const DevicePage = props => {
         setDevice(data);
       })
       .catch(e => console.log(e));
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
+  useDocumentTitle("Девайс");
 
   return (
     <Container className='mt-3'>

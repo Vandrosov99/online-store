@@ -19,6 +19,7 @@ import {
   makeActiveBrandId,
   makeLimitPages,
 } from "../store/selectors/index";
+import useDocumentTitle from "../hooks/useDocumentTitle";
 
 const mapStateToProps = createStructuredSelector({
   activeBrandId: makeActiveBrandId(),
@@ -63,7 +64,9 @@ const ShopPage = props => {
       page: activePage,
       limit,
     });
-  }, [activeBrandId, activeTypeId, activePage, limit]);
+  }, [activeBrandId, activeTypeId, activePage, limit]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  useDocumentTitle("Магазин");
 
   return (
     <Container style={{ height: window.innerHeight - 62 }}>

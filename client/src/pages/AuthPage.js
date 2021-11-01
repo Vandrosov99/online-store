@@ -9,6 +9,7 @@ import { Container, Button, Card, Form, Row } from "react-bootstrap";
 import { registration, login } from "../http/userApi";
 import { setAuth, setNotification, setUser } from "../store/actions/index";
 import { useDispatch } from "react-redux";
+import useDocumentTitle from "../hooks/useDocumentTitle";
 
 const AuthPage = () => {
   const history = useHistory();
@@ -84,6 +85,8 @@ const AuthPage = () => {
       password: "",
     }); //clear input values
   };
+
+  useDocumentTitle("Авторизация");
 
   return (
     <Container

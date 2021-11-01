@@ -28,7 +28,7 @@ const AuthController = ({ children }) => {
 
   useEffect(() => {
     checkUser();
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   if (isLoading) {
     return <Spinner animation='grow' />;
