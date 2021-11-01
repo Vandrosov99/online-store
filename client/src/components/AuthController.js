@@ -14,7 +14,6 @@ const AuthController = ({ children }) => {
   const checkUser = async () => {
     try {
       const user = await authCheck();
-      console.log("We are here");
       dispatch(setUser(user));
       dispatch(setAuth(true));
       history.push(SHOP_ROUTE);

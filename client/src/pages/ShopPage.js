@@ -3,11 +3,32 @@ import TypeBar from "../components/TypeBar";
 import BrandBar from "../components/BrandBar";
 import { Col, Container, Row } from "react-bootstrap";
 import DeviceList from "../components/DeviceList";
-import { useDispatch } from "react-redux";
-import { setTypes, setBrands, setDevices } from "../store/actions/index";
+import { useDispatch, connect } from "react-redux";
+import {
+  setTypes,
+  setBrands,
+  setDevices,
+  setTotalPages,
+} from "../store/actions/index";
 import httpService from "../services/httpService";
+import Pages from "../components/Pages";
+import { createStructuredSelector } from "reselect";
+import {
+  makeActivePage,
+  makeActiveTypeId,
+  makeActiveBrandId,
+  makeLimitPages,
+} from "../store/selectors/index";
 
-const ShopPage = () => {
+const mapStateToProps = createStructuredSelector({
+  activeBrandId: makeActiveBrandId(),
+  activeTypeId: makeActiveTypeId(),
+  activePage: makeActivePage(),
+  limit: makeLimitPages(),
+});
+
+const ShopPage = props => {
+  const { activeBrandId, activeTypeId, activePage, limit } = props;
   const dispatch = useDispatch();
 
   const getTypesFromServer = async () => {
@@ -22,20 +43,30 @@ const ShopPage = () => {
     dispatch(setBrands(brands));
   };
 
-  const getDevicesFromServer = async () => {
-    const devices = await httpService.getDevicesFromServer();
-
-    dispatch(setDevices(devices.rows));
+  const getDevicesFromServer = async data => {
+    const devices = await httpService.getDevicesFromServer(data);
+    if (devices) {
+      dispatch(setDevices(devices.rows));
+      dispatch(setTotalPages(devices.count));
+    }
   };
 
   useEffect(() => {
     getTypesFromServer();
     getBrandsFromServer();
-    getDevicesFromServer();
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
+  useEffect(() => {
+    getDevicesFromServer({
+      brandId: activeBrandId,
+      typeId: activeTypeId,
+      page: activePage,
+      limit,
+    });
+  }, [activeBrandId, activeTypeId, activePage, limit]);
+
   return (
-    <Container>
+    <Container style={{ height: window.innerHeight - 62 }}>
       <Row className='mt-2'>
         <Col md={3}>
           <TypeBar />
@@ -43,10 +74,11 @@ const ShopPage = () => {
         <Col md={9}>
           <BrandBar />
           <DeviceList />
+          <Pages />
         </Col>
       </Row>
     </Container>
   );
 };
 
-export default ShopPage;
+export default connect(mapStateToProps)(ShopPage);

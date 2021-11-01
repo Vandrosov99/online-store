@@ -30,8 +30,15 @@ const createDevice = async device => {
   return data;
 };
 
-const fetchDevices = async () => {
-  const { data } = await $host.get("api/device");
+const fetchDevices = async ({ typeId, brandId, page = 1, limit }) => {
+  const { data } = await $host.get("api/device", {
+    params: {
+      typeId,
+      brandId,
+      page,
+      limit,
+    },
+  });
 
   return data;
 };

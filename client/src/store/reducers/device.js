@@ -9,6 +9,9 @@ const deviceReducer = (state = initState, action) => {
 
   switch (type) {
     case SET_DEVICES:
+      if (!payload) {
+        return { ...state };
+      }
       return { devices: [...payload] };
     default:
       return state;

@@ -8,6 +8,8 @@ import {
   DELETE_NOTIFICATION,
   SET_USER,
   SET_TYPES,
+  SET_TOTAL_PAGES,
+  SET_ACTIVE_PAGE,
 } from "../../const/duckKeys";
 
 const setAuth = payload => {
@@ -73,6 +75,20 @@ const setUser = payload => {
   };
 };
 
+const setTotalPages = payload => {
+  return {
+    type: SET_TOTAL_PAGES,
+    payload: payload,
+  };
+};
+
+const setActivePage = payload => {
+  return {
+    type: SET_ACTIVE_PAGE,
+    payload: payload,
+  };
+};
+
 export {
   setAuth,
   setDevices,
@@ -83,4 +99,6 @@ export {
   deleteNotification,
   setUser,
   setTypes,
+  setTotalPages,
+  setActivePage,
 };

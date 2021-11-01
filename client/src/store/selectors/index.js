@@ -21,6 +21,15 @@ const makeActiveBrandId = () =>
 const makeNotifications = () =>
   createSelector(makeUser(), state => state.notificationList);
 
+const makeTotalCountPages = () =>
+  createSelector(makeUser(), state => state.pagination.totalCountPages);
+
+const makeLimitPages = () =>
+  createSelector(makeUser(), state => state.pagination.limit);
+
+const makeActivePage = () =>
+  createSelector(makeUser(), state => state.pagination.activePage);
+
 export {
   selectGlobal,
   makeIsAuth,
@@ -30,4 +39,7 @@ export {
   makeActiveTypeId,
   makeActiveBrandId,
   makeNotifications,
+  makeTotalCountPages,
+  makeLimitPages,
+  makeActivePage,
 };

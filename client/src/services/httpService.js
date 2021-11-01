@@ -21,7 +21,7 @@ const fetchData = async fetchFoo => {
 
 const getTypesFromServer = () => fetchData(fetchTypes);
 const getBrandsFromServer = () => fetchData(fetchBrands);
-const getDevicesFromServer = () => fetchData(fetchDevices);
+const getDevicesFromServer = data => fetchData(() => fetchDevices(data));
 const getSingleDeviceFromServerById = id => fetchData(() => fetchOneDevice(id));
 const setCreateTypeToServer = type => fetchData(() => createType(type));
 const setCreateBrandToServer = brand => fetchData(() => createBrand(brand));

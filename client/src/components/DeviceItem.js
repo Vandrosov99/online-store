@@ -14,7 +14,7 @@ const DeviceItem = props => {
   };
 
   return (
-    <Col md={3} className='mt-3'>
+    <Col md={3} className='m-3'>
       <Card
         style={{ width: 150, cursor: "pointer" }}
         border={"light"}
