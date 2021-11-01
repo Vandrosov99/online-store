@@ -11,7 +11,7 @@ import {
   setTotalPages,
 } from "../store/actions/index";
 import httpService from "../services/httpService";
-import Pages from "../components/Pages";
+import PageList from "../components/PageList";
 import { createStructuredSelector } from "reselect";
 import {
   makeActivePage,
@@ -49,6 +49,9 @@ const ShopPage = props => {
     if (devices) {
       dispatch(setDevices(devices.rows));
       dispatch(setTotalPages(devices.count));
+    } else {
+      dispatch(setDevices([]));
+      dispatch(setTotalPages([]));
     }
   };
 
@@ -77,7 +80,7 @@ const ShopPage = props => {
         <Col md={9}>
           <BrandBar />
           <DeviceList />
-          <Pages />
+          <PageList />
         </Col>
       </Row>
     </Container>

@@ -3,10 +3,16 @@ import { Card, Col, Image } from "react-bootstrap";
 import starImg from "../assets/device/mini_star.png";
 import { useHistory } from "react-router";
 import { DEVICE_ROUTE } from "../const/routeKeys";
+import { useSelector } from "react-redux";
+import { makeBrands } from "../store/selectors";
 
 const DeviceItem = props => {
   const { device } = props;
-  const { img, rating, name, id } = device;
+  const { img, rating, name, id, typeId } = device;
+  const { brands } = useSelector(makeBrands());
+  console.log("brands");
+  console.log(brands);
+  const brandName = brands.find(brand => brand.id === typeId);
   const history = useHistory();
 
   const onDeviceClick = () => {
@@ -26,7 +32,7 @@ const DeviceItem = props => {
           src={process.env.REACT_APP_API_URL + img}
         />
         <div className='text-black-50 mt-1 d-flex justify-content-between align-items-center'>
-          <div>Samsung</div>
+          <div>{brandName.name ? brandName.name : "Undefine"}</div>
           <div className='d-flex align-items-center'>
             <div>{rating}</div>
             <Image src={starImg} />

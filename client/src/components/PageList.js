@@ -8,6 +8,7 @@ import {
 } from "../store/selectors/index";
 import { createStructuredSelector } from "reselect";
 import { setActivePage } from "../store/actions";
+import PageItem from "../components/PageItem";
 
 const mapStateToProps = createStructuredSelector({
   totalPages: makeTotalCountPages(),
@@ -15,7 +16,7 @@ const mapStateToProps = createStructuredSelector({
   activePage: makeActivePage(),
 });
 
-const Pages = props => {
+const PageList = props => {
   const { limit, totalPages, activePage } = props;
   const dispatch = useDispatch();
   const pageCount = Math.ceil(totalPages / limit);
@@ -30,18 +31,18 @@ const Pages = props => {
     <Pagination className='d-flex justify-content-center mt-3'>
       {pages.map(page => {
         return (
-          <Pagination.Item
+          <PageItem
             key={page}
+            page={page}
+            activePage={activePage}
             onClick={() => {
               dispatch(setActivePage(page));
             }}
-            active={activePage === page}>
-            {page}
-          </Pagination.Item>
+          />
         );
       })}
     </Pagination>
   );
 };
 
-export default connect(mapStateToProps)(Pages);
+export default connect(mapStateToProps)(PageList);
