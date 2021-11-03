@@ -8,6 +8,8 @@ import {
   createDevice,
 } from "../http/deviceApi";
 
+import { createBasketDevice, getBasketDevices } from "../http/basketApi";
+
 const fetchData = async fetchFoo => {
   let response;
   try {
@@ -26,6 +28,8 @@ const getSingleDeviceFromServerById = id => fetchData(() => fetchOneDevice(id));
 const setCreateTypeToServer = type => fetchData(() => createType(type));
 const setCreateBrandToServer = brand => fetchData(() => createBrand(brand));
 const setCreateDevice = data => fetchData(() => createDevice(data));
+const setBasketDeviceToServer = id => fetchData(() => createBasketDevice(id));
+const getBasketDeviceFromServer = () => fetchData(getBasketDevices);
 
 const httpService = {
   getTypesFromServer,
@@ -35,6 +39,8 @@ const httpService = {
   setCreateTypeToServer,
   setCreateBrandToServer,
   setCreateDevice,
+  setBasketDeviceToServer,
+  getBasketDeviceFromServer,
 };
 
 export default httpService;

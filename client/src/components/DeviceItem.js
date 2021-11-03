@@ -10,8 +10,6 @@ const DeviceItem = props => {
   const { device } = props;
   const { img, rating, name, id, typeId } = device;
   const { brands } = useSelector(makeBrands());
-  console.log("brands");
-  console.log(brands);
   const brandName = brands.find(brand => brand.id === typeId);
   const history = useHistory();
 

@@ -21,6 +21,12 @@ const DevicePage = props => {
 
   useDocumentTitle("Девайс");
 
+  const onBasket = () => {
+    httpService.setBasketDeviceToServer(id).then(() => {
+      console.log("Товар добавлен в коризну");
+    });
+  };
+
   return (
     <Container className='mt-3'>
       <Row>
@@ -57,7 +63,9 @@ const DevicePage = props => {
               border: "5px solid lightgray",
             }}>
             <h3>Цена: {price} грн.</h3>
-            <Button variant={"outline-dark"}>Добавить в корзину</Button>
+            <Button variant={"outline-dark"} onClick={onBasket}>
+              Добавить в корзину
+            </Button>
           </Card>
         </Col>
       </Row>

@@ -1,6 +1,11 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { ADMIN_ROUTE, LOGIN_ROUTE, SHOP_ROUTE } from "../const/routeKeys";
+import {
+  ADMIN_ROUTE,
+  BASKET_ROUTE,
+  LOGIN_ROUTE,
+  SHOP_ROUTE,
+} from "../const/routeKeys";
 import { makeIsAuth } from "../store/selectors";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router";
@@ -19,6 +24,7 @@ const NavBar = () => {
     dispatch(setAuth(false));
     dispatch(setUser({}));
   };
+  const onBasket = () => history.push(BASKET_ROUTE);
 
   return (
     <Navbar bg='dark' variant='dark'>
@@ -41,6 +47,12 @@ const NavBar = () => {
               className='ml-2'
               onClick={onLogout}>
               Выйти
+            </Button>
+            <Button
+              variant={"outline-light"}
+              className='ml-2'
+              onClick={onBasket}>
+              Корзина
             </Button>
           </Nav>
         ) : (
