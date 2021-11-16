@@ -1,10 +1,12 @@
+import cn from "classnames";
 import React from "react";
 import { Card, Col, Image } from "react-bootstrap";
-import starImg from "../assets/device/mini_star.png";
+import starImg from "../../assets/device/mini_star.png";
 import { useHistory } from "react-router";
-import { DEVICE_ROUTE } from "../const/routeKeys";
+import { DEVICE_ROUTE } from "../../const/routeKeys";
 import { useSelector } from "react-redux";
-import { makeBrands } from "../store/selectors";
+import { makeBrands } from "../../store/selectors";
+import styles from "../DeviceItem/DeviceItem.module.scss";
 
 const DeviceItem = props => {
   const { device } = props;
@@ -18,17 +20,13 @@ const DeviceItem = props => {
   };
 
   return (
-    <Col md={3} className='m-3'>
+    <Col md={3} className='m-3 '>
       <Card
         style={{ width: 150, cursor: "pointer" }}
         border={"light"}
-        className='p-2'
+        className={cn(styles.mobile, "p2")}
         onClick={onDeviceClick}>
-        <Image
-          width={"100%"}
-          height={120}
-          src={process.env.REACT_APP_API_URL + img}
-        />
+        <Image width={"100%"} height={120} src={process.env.REACT_APP_API_URL + img} />
         <div className='text-black-50 mt-1 d-flex justify-content-between align-items-center'>
           <div>{brandName.name ? brandName.name : "Undefine"}</div>
           <div className='d-flex align-items-center'>
